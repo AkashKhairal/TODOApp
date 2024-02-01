@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         int option = 0;
         int TaskID = 1;
-        ArrayList<Operations> oprList = new ArrayList<Operations>();
+        ArrayList<Operations> oprList = new ArrayList<>();
 
         do{
             System.out.println("Welcome to the TODO List Application !");
@@ -46,10 +46,17 @@ public class Main {
                 case 2 :
                     try
                     {
-                        for (int i=0; i<oprList.size(); i++)
+                        if (oprList.isEmpty())
                         {
-                            oprList.get(i).ViewTasks();
+                            System.out.println("No Tasks in the TODO List.");
                         }
+                        else{
+                            for (int i=0; i<oprList.size(); i++)
+                            {
+                                oprList.get(i).ViewTasks();
+                            }
+                        }
+
 
                     }
                     catch (Exception e)
@@ -62,9 +69,16 @@ public class Main {
                 case 3:
                     try
                     {
-                        System.out.println("Enter the TaskID to mark as Completed.");
-                        int tId = sc.nextInt();
-                        oprList.get(--tId).MarkAsCompleted();
+                        if (oprList.isEmpty())
+                        {
+                            System.out.println("No Tasks in the TODO List.");
+                        }
+                        else{
+                            System.out.println("Enter the TaskID to mark as Completed.");
+                            int tId = sc.nextInt();
+                            oprList.get(--tId).MarkAsCompleted();
+                        }
+
                     }
                     catch (Exception e)
                     {
